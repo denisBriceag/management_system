@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Actions, ofActionDispatched } from '@ngxs/store';
 import { Login } from 'src/app/auth/state/auth.actions';
 import { Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-maindashboard',
   templateUrl: './maindashboard.component.html',
@@ -12,8 +14,10 @@ export class MaindashboardComponent implements OnInit {
   constructor(private actions: Actions, private router: Router) {}
 
   ngOnInit(): void {
-    this.actions.pipe(ofActionDispatched(Login)).subscribe(() => {
-      this.router.navigate(['/dashboard']);
-    });
+    this.actions
+      .pipe(untilDestroyed(this), ofActionDispatched(Login))
+      .subscribe(() => {
+        this.router.navigate(['/dashboard']);
+      });
   }
 }

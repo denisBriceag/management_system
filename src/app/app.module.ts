@@ -16,6 +16,7 @@ import { AuthState } from './auth/state/auth.state';
 import { RecoveryComponent } from './auth/recovery/recovery.component';
 import { environment } from 'src/environments/environment';
 import { CoreModule } from './core/core.module';
+import { RegistrationComponent } from './auth/registration/registration.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     LoginComponent,
     RecoveryComponent,
+    RegistrationComponent,
     NgxsModule.forRoot([AuthState]),
     NgxsStoragePluginModule.forRoot({ key: 'token' }),
     CoreModule,
