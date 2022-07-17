@@ -1,0 +1,48 @@
+@import "../../../assets/css/variables.scss";
+
+section {
+  .auth-form-light {
+    border-radius: 7px;
+  }
+
+  .form-control {
+    border-radius: 7px;
+  }
+
+  .form-check-input {
+    border-radius: 7px;
+  }
+
+  h5 {
+    margin-top: 10px;
+  }
+
+  .input-helper {
+    text-transform: none;
+  }
+
+  .oauth {
+    border: 1px solid rgb(216, 215, 215);
+  }
+
+  .oauth:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  }
+
+  .google {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin: 0px 10px 4spx 0px;
+  }
+
+  h5,
+  h3 {
+    cursor: default;
+  }
+
+  .createacc {
+    cursor: default;
+  }
+}
