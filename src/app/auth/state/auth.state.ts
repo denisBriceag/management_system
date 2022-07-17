@@ -42,16 +42,11 @@ export class AuthState {
 
           ctx.setState(res.idToken);
           console.log(ctx.getState());
-
-          this.router.navigate(['/dashboard']);
         }),
         catchError((err) => {
           throw new Error(err.error.error.message);
         })
-      )
-      .subscribe(() => {
-        console.log('success');
-      });
+      );
   }
 
   @Action(LoginWithGoogle)
