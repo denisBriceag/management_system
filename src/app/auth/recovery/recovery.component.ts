@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  standalone: true,
-  imports: [ReactiveFormsModule],
   selector: 'app-recovery',
   templateUrl: './recovery.component.html',
   styleUrls: ['./recovery.component.scss'],
@@ -11,7 +10,5 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class RecoveryComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {
-    console.log('recovery');
-  }
+  ngOnInit(): void {}
 }

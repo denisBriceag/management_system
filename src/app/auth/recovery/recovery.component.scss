@@ -1,7 +1,19 @@
+@import "../../../assets/css/variables.scss";
+
 .form-control {
   border-radius: 7px;
 }
 
 .center {
   align-items: center;
+}
+
+.white {
+  background-color: $perfect-white;
+}
+
+.form-border {
+  border: 1px solid $scandinavian-gray;
+  border-radius: $auth-border-radius;
+  box-shadow: $auth-form-shadow;
 }

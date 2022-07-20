@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { GoogleAuthProvider } from 'firebase/auth';
-import { catchError, tap } from 'rxjs';
+import { catchError, Observable, tap } from 'rxjs';
+import { AuthResponse } from 'src/app/shared/models/auth.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Login, LoginWithGoogle } from './auth.actions';
-
-// export interface TokenState {
-//   token: string | null;
-// }
 
 @State<string | null>({
   name: 'token',
@@ -19,17 +15,19 @@ import { Login, LoginWithGoogle } from './auth.actions';
 export class AuthState {
   constructor(
     private authService: AuthService,
-    private angularFireAuthService: AngularFireAuth,
-    private router: Router
+    private angularFireAuthService: AngularFireAuth
   ) {}
 
   @Selector()
-  static isAuthenticated(state: string): boolean {
+  public static isAuthenticated(state: string): boolean {
     return !!state;
   }
 
   @Action(Login)
-  login(ctx: StateContext<string | null>, action: Login) {
+  public login(
+    ctx: StateContext<string | null>,
+    action: Login
+  ): Observable<AuthResponse> {
     return this.authService
       .authenticate({
         email: action.userData.email,
@@ -38,10 +36,7 @@ export class AuthState {
       })
       .pipe(
         tap((res) => {
-          console.log(res.idToken);
-
           ctx.setState(res.idToken);
-          console.log(ctx.getState());
         }),
         catchError((err) => {
           throw new Error(err.error.error.message);
@@ -50,7 +45,7 @@ export class AuthState {
   }
 
   @Action(LoginWithGoogle)
-  async loginWithGoogle(ctx: StateContext<any>) {
+  public async loginWithGoogle(ctx: StateContext<any>) {
     const provider = new GoogleAuthProvider();
     const credentials = await this.angularFireAuthService.signInWithPopup(
       provider
