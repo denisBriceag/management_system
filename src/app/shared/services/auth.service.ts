@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { AuthRequest, AuthResponse } from '../models/auth.model';
+import { Observable } from 'rxjs';
 
 export enum Api {
   EMAIL_PASSWORD = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC0GI9StpCTwZIqZKXFm_w9ogA1QMB4pG8',
@@ -13,7 +14,7 @@ export enum Api {
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  public authenticate(userData: AuthRequest) {
+  public authenticate(userData: AuthRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(Api.EMAIL_PASSWORD, userData);
   }
 

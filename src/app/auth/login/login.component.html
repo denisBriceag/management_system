@@ -1,8 +1,8 @@
 <section class="container-fluid page-body-wrapper full-page-wrapper">
-  <div class="content-wrapper d-flex align-items-center auth px-0">
+  <div class="content-wrapper d-flex align-items-center auth px-0 white">
     <div class="row w-100 mx-0">
       <div class="col-lg-4 mx-auto">
-        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+        <div class="auth-form-light text-left py-5 px-4 px-sm-5 form-border">
           <h3 class="noselect">Hello! Let's get started</h3>
           <h5 class="noselect">Sign in to continue.</h5>
           <form class="pt-3" [formGroup]="userAuthForm">
@@ -39,10 +39,7 @@
                   <i class="input-helper noselect"></i>
                 </labeL>
               </div>
-              <a
-                [routerLink]="['/recovery']"
-                routerLinkActive="router-link-active"
-                class="auth-link text-black"
+              <a routerLink="/recovery" class="auth-link text-black"
                 >Forgot password?</a
               >
             </div>

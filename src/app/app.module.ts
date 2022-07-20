@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgxsModule } from '@ngxs/store';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
@@ -11,21 +12,20 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/login/login.component';
 import { AuthState } from './auth/state/auth.state';
-import { RecoveryComponent } from './auth/recovery/recovery.component';
 import { environment } from 'src/environments/environment';
 import { CoreModule } from './core/core.module';
-import { RegistrationComponent } from './auth/registration/registration.component';
+import { RouterModule } from '@angular/router';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    LoginComponent,
-    RecoveryComponent,
-    RegistrationComponent,
+    RouterModule,
+    AuthModule,
     NgxsModule.forRoot([AuthState]),
     NgxsStoragePluginModule.forRoot({ key: 'token' }),
     CoreModule,

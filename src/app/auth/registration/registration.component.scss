@@ -1,0 +1,11 @@
+@import "../../../assets/css/variables.scss";
+
+.white {
+  background-color: $perfect-white;
+}
+
+.form-border {
+  border: 1px solid $scandinavian-gray;
+  box-shadow: $auth-form-shadow;
+  border-radius: $auth-border-radius;
+}

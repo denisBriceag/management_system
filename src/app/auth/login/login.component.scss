@@ -1,10 +1,6 @@
 @import "../../../assets/css/variables.scss";
 
 section {
-  .auth-form-light {
-    border-radius: 7px;
-  }
-
   .form-control {
     border-radius: 7px;
   }
@@ -22,7 +18,7 @@ section {
   }
 
   .oauth {
-    border: 1px solid rgb(216, 215, 215);
+    border: 1px solid $scandinavian-gray;
   }
 
   .oauth:hover {
@@ -44,5 +40,15 @@ section {
 
   .createacc {
     cursor: default;
+  }
+
+  .white {
+    background-color: $perfect-white;
+  }
+
+  .form-border {
+    border: 1px solid $scandinavian-gray;
+    box-shadow: $auth-form-shadow;
+    border-radius: $auth-border-radius;
   }
 }

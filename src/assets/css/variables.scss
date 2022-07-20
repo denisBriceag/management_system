@@ -14,7 +14,16 @@ $light-yellow: #f9efc2;
 $light-blue2: #3771dfaf;
 $transparent-blue: #f2faff;
 $light-red: #e0a5ab;
+$perfect-white: white;
+$scandinavian-gray: rgb(216, 215, 215);
 
 //fonts & font-sizes
 $label-size: 14px;
 $open-sans: "Open Sans";
+
+//shadows
+$auth-form-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+  rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+
+//border-radius
+$auth-border-radius: 7px;

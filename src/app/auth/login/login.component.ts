@@ -1,31 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  ReactiveFormsModule,
-  FormsModule,
-  Validators,
-} from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import {
-  Actions,
-  ofActionCanceled,
-  ofActionDispatched,
-  ofActionSuccessful,
-  Store,
-} from '@ngxs/store';
+import { Actions, ofActionSuccessful, Store } from '@ngxs/store';
 import { AuthRequest, Login, LoginWithGoogle } from '../state/auth.actions';
 
 @UntilDestroy()
 @Component({
-  standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, RouterModule],
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  public userAuthForm = this.fb.group({
+  public userAuthForm: FormGroup = this.fb.group({
     email: [
       null,
       [
@@ -49,7 +36,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.userAuthForm.value);
     this.actions$
       .pipe(untilDestroyed(this), ofActionSuccessful(Login))
       .subscribe(() => {
